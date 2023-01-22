@@ -9,6 +9,11 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "modern-css-reset": "^1.4.0",
+    "node-sass": "^8.0.0",
+    "phaser": "^3.55.2",
+    "sass": "1.26.5",
+    "sass-loader": "8.0.2",
     "vue": "^2.6.11"
   },
   "devDependencies": {
