@@ -59,13 +59,13 @@ export function createMain(vue, shapeTypeQueue) {
 	function update() {
 		if (status == "ready" || status == "pause") {
 			if (cursors.space.isDown) {
-				status = "start";
+				setStart();
 				infomation.clear();
 				this.physics.resume();
 			}
 		} else if (status == "start") {
 			if (cursors.shift.isDown) {
-				status = "pause";
+				setPause();
 				infomation.showPause();
 				this.physics.pause();
 			}
@@ -121,6 +121,16 @@ export function createMain(vue, shapeTypeQueue) {
 			speed = baseSpeed;
 		}
 	}
+
+    function setStart() {
+        status = 'start';
+        vue.status = 'start';
+    }
+
+    function setPause() {
+        status = 'pause';
+        vue.status = 'pause';   
+    }
 }
 
 export function tern() {

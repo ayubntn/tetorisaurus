@@ -1,5 +1,6 @@
 <template>
 	<div id="app">
+    {{status}}
 		<div class="gameContainer">
 			<div class="leftSide">
 				<div class="side scoreBoard">
@@ -19,19 +20,19 @@
 
 					<div class="scoreBoard_level">
 						<p class="head">SPEED LEVEL</p>
-            <ul>
-              <li :class="speedLevel >= 1 ? 'active' : ''"></li>
-              <li :class="speedLevel >= 2 ? 'active' : ''"></li>
-              <li :class="speedLevel >= 3 ? 'active' : ''"></li>
-              <li :class="speedLevel >= 4 ? 'active' : ''"></li>
-              <li :class="speedLevel >= 5 ? 'active' : ''"></li>
-            </ul>
+						<ul>
+							<li :class="speedLevel >= 1 ? 'active' : ''"></li>
+							<li :class="speedLevel >= 2 ? 'active' : ''"></li>
+							<li :class="speedLevel >= 3 ? 'active' : ''"></li>
+							<li :class="speedLevel >= 4 ? 'active' : ''"></li>
+							<li :class="speedLevel >= 5 ? 'active' : ''"></li>
+						</ul>
 					</div>
 				</div>
 
 				<div class="side stateBoard">
-					<button type="button" class="btn">PLAY</button>
-					<button type="button" class="btn">STOP</button>
+					<button type="button" class="btn" @click="play"><span class="mini">Space</span>PLAY<img src="@/assets/play.svg" /></button>
+					<button type="button" class="btn" @click="stop"><span class="mini">Shift</span>STOP<img src="@/assets/stop.svg" /></button>
 				</div>
 			</div>
 
@@ -70,6 +71,7 @@ export default {
 	components: {},
 	data() {
 		return {
+      status: 'ready',
 			score: 0,
 			speedLevel: 1,
 		};
@@ -84,6 +86,12 @@ export default {
 		},
 	},
 	methods: {
+		play() {
+
+		},
+		stop() {
+
+		},
 		tern() {
 			main.tern();
 		},
