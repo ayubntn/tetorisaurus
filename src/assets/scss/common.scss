@@ -4,13 +4,103 @@
 }
 
 body {
+    min-height: 100vh;
+    color: #fff;
+    font-family: "Helvetica", sans-serif;
+    background-color: #B7ADA2;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    height: 100vh;
     background-image: url("~@/assets/wall1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 100vh;
-    color: #fff;
-    font-family: "Helvetica", sans-serif;
+
+    .wall {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: opacity 0.5s;
+
+        &.wall1 {
+            background-image: url("~@/assets/wall1.jpg");
+        }
+
+        &.wall2 {
+            background-image: url("~@/assets/wall2.jpg");
+        }
+
+        &.wall3 {
+            background-image: url("~@/assets/wall3.jpg");
+        }
+
+        &.wall4 {
+            background-image: url("~@/assets/wall4.jpg");
+        }
+
+        &.wall5 {
+            background-image: url("~@/assets/wall5.jpg");
+        }
+    }
+
+    &.level1 {
+
+        .wall2,
+        .wall3,
+        .wall4,
+        .wall5 {
+            opacity: 0;
+        }
+    }
+
+    &.level2 {
+
+        .wall1,
+        .wall3,
+        .wall4,
+        .wall5 {
+            opacity: 0;
+        }
+    }
+
+    &.level3 {
+
+        .wall1,
+        .wall2,
+        .wall4,
+        .wall5 {
+            opacity: 0;
+        }
+    }
+
+    &.level4 {
+
+        .wall1,
+        .wall2,
+        .wall3,
+        .wall5 {
+            opacity: 0;
+        }
+    }
+
+    &.level5 {
+
+        .wall1,
+        .wall2,
+        .wall3,
+        .wall4 {
+            opacity: 0;
+        }
+    }
+
 }
 
 button {

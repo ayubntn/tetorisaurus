@@ -1,5 +1,11 @@
 <template>
-	<div id="app">
+	<div id="app" :class="`level${score + 1}`">
+		<div class="wall wall1"></div>
+		<div class="wall wall2"></div>
+		<div class="wall wall3"></div>
+		<div class="wall wall4"></div>
+		<div class="wall wall5"></div>
+
 		<div class="gameContainer">
 			<div class="leftSide">
 				<div class="side scoreBoard">
@@ -73,7 +79,7 @@ export default {
 			status: "ready",
 			score: 0,
 			speedLevel: 1,
-			dropInterval: null
+			dropInterval: null,
 		};
 	},
 	created() {
@@ -99,21 +105,32 @@ export default {
 			main.setStop();
 		},
 		tern() {
-			main.tern();
+			if (this.status == "start") {
+				main.tern();
+			}
 		},
 		left() {
-			main.left();
+			if (this.status == "start") {
+				main.left();
+			}
 		},
 		right() {
-			main.right();
+			if (this.status == "start") {
+				main.right();
+			}
 		},
 		drop() {
+			if (this.status != "start") {
+				return;
+			}
 			this.dropInterval = setInterval(() => {
-				console.log("drop");
 				main.drop();
 			}, 20);
 		},
 		dropEnd() {
+			if (this.status != "start") {
+				return;
+			}
 			clearInterval(this.dropInterval);
 			main.dropEnd();
 		},
