@@ -1,6 +1,5 @@
 <template>
 	<div id="app">
-    {{status}}
 		<div class="gameContainer">
 			<div class="leftSide">
 				<div class="side scoreBoard">
@@ -50,7 +49,7 @@
 						<button type="button" class="btn control_btn_up" @click="tern"><img src="@/assets/tern.svg" /></button>
 						<button type="button" class="btn control_btn_left" @click="left"><img src="@/assets/left.svg" /></button>
 						<button type="button" class="btn control_btn_right" @click="right"><img src="@/assets/right.svg" /></button>
-						<button type="button" class="btn control_btn_drop" @click="drop"><img src="@/assets/drop.svg" /></button>
+						<button type="button" ref="dropBtn" class="btn control_btn_drop"><img src="@/assets/drop.svg" /></button>
 					</div>
 				</div>
 			</div>
@@ -71,14 +70,19 @@ export default {
 	components: {},
 	data() {
 		return {
-      status: 'ready',
+			status: "ready",
 			score: 0,
 			speedLevel: 1,
+			dropInterval: null
 		};
 	},
 	created() {
 		main.createMain(this, shapeTypeQueue);
 		side.createSide(this, shapeTypeQueue);
+	},
+	mounted() {
+		this.$refs.dropBtn.onmousedown = this.drop;
+		this.$refs.dropBtn.onmouseup = this.dropEnd;
 	},
 	computed: {
 		formattedScore() {
@@ -87,10 +91,12 @@ export default {
 	},
 	methods: {
 		play() {
-
+			this.status = "start";
+			main.setPlay();
 		},
 		stop() {
-
+			this.status = "pause";
+			main.setStop();
 		},
 		tern() {
 			main.tern();
@@ -102,7 +108,14 @@ export default {
 			main.right();
 		},
 		drop() {
-			main.drop();
+			this.dropInterval = setInterval(() => {
+				console.log("drop");
+				main.drop();
+			}, 20);
+		},
+		dropEnd() {
+			clearInterval(this.dropInterval);
+			main.dropEnd();
 		},
 	},
 };
