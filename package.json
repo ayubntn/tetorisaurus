@@ -1,14 +1,17 @@
 {
   "name": "tetorisaurus",
+  "homepage": "https://ayubntn.github.io/tetorisaurus",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy": "yarn build && gh-pages -d dist",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "gh-pages": "^5.0.0",
     "modern-css-reset": "^1.4.0",
     "node-sass": "^8.0.0",
     "phaser": "^3.55.2",
