@@ -6,7 +6,6 @@ export function loadAllImages(game) {
     game.load.image("type4", "img/block4.png");
     game.load.image("type5", "img/block5.png");
     game.load.spritesheet("lightImage", "img/pipo-btleffect008.png", { frameWidth: 120, frameHeight: 120 });
-    game.load.image("key_operation", "img/key_operation.png");
 }
 
 export function makeAxisGraphics(game, config) {
