@@ -1,5 +1,5 @@
 <template>
-	<div id="app" :class="`level${score + 1}`">
+	<div id="app" :class="`level${speedLevel}`">
 		<div class="wall wall1"></div>
 		<div class="wall wall2"></div>
 		<div class="wall wall3"></div>
@@ -87,26 +87,8 @@ export default {
 		side.createSide(this, shapeTypeQueue);
 	},
 	mounted() {
-		// ダブルタップによる拡大縮小を禁止
-		document.addEventListener(
-			"touchend",
-			function (event) {
-				event.preventDefault();
-				event.target.dispatchEvent(new Event('click'));
-			},
-			false
-		);
-		if (this.isTouchDevice()) {
-			// 長押しによるメニュー表示を抑制
-			this.$refs.dropBtn.oncontextmenu = (e) => {
-				e.preventDefault();
-			};
-			this.$refs.dropBtn.ontouchstart = this.drop;
-			this.$refs.dropBtn.ontouchend = this.dropEnd;
-		} else {
-			this.$refs.dropBtn.onmousedown = this.drop;
-			this.$refs.dropBtn.onmouseup = this.dropEnd;
-		}
+		this.$refs.dropBtn.onmousedown = this.drop;
+		this.$refs.dropBtn.onmouseup = this.dropEnd;
 	},
 	computed: {
 		formattedScore() {
@@ -152,14 +134,6 @@ export default {
 			}
 			clearInterval(this.dropInterval);
 			main.dropEnd();
-		},
-		isTouchDevice() {
-			return (
-				navigator.userAgent.indexOf("iPhone") > 0 ||
-				(navigator.userAgent.indexOf("Android") > 0 && navigator.userAgent.indexOf("Mobile") > 0) ||
-				navigator.userAgent.indexOf("iPad") > 0 ||
-				navigator.userAgent.indexOf("Android") > 0
-			);
 		},
 	},
 };
