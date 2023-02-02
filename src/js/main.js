@@ -6,7 +6,7 @@ import Shape from "./shape.js";
 import * as graphicsUtil from "./graphics_util.js";
 
 let shape;
-let baseSpeed = 30;
+let baseSpeed = 20;
 let speed = baseSpeed;
 let scene;
 let isBtnDown = false;
@@ -16,7 +16,7 @@ export function createMain(vue, shapeTypeQueue) {
 	let cursors;
 	let config = new TetrisConfig(22, 10, 24);
 	let phaserConfig = {
-        parent: 'game',
+		parent: "game",
 		type: Phaser.AUTO,
 		width: config.width,
 		height: config.height,
@@ -32,7 +32,7 @@ export function createMain(vue, shapeTypeQueue) {
 			update: update,
 		},
 		backgroundColor: 0xffffff,
-        transparent: true
+		transparent: true,
 	};
 	new Phaser.Game(phaserConfig);
 	let board;
@@ -58,15 +58,15 @@ export function createMain(vue, shapeTypeQueue) {
 	}
 
 	function update() {
-        scene = this;
+		scene = this;
 		if (vue.status == "ready" || vue.status == "pause") {
 			if (cursors.space.isDown) {
-				vue.status = 'start';
+				vue.status = "start";
 				this.physics.resume();
 			}
 		} else if (vue.status == "start") {
 			if (cursors.shift.isDown) {
-				vue.status = 'pause';
+				vue.status = "pause";
 				this.physics.pause();
 			}
 		}
@@ -80,7 +80,7 @@ export function createMain(vue, shapeTypeQueue) {
 			this.physics.add.collider(shape.getPhysicsGroup(), board.getStaticBlocks());
 		}
 
-		shape.setVelocityY(speed + vue.speedLevel * 30);
+		shape.setVelocityY(speed + vue.speedLevel * baseSpeed);
 		cursorOperation();
 		// 回転により微妙にX軸がずれるので補正
 		shape.adjustX();
@@ -91,10 +91,16 @@ export function createMain(vue, shapeTypeQueue) {
 				vue.status = "end";
 			}
 			board.stack(shape);
-			vue.score += board.deleteCompLine(() => {
+			let row = board.deleteCompLine(() => {
 				shape = null;
-				vue.speedLevel = Math.floor(vue.score / 10) + 1;
+				vue.speedLevel = Math.floor(vue.score / 1000) + 1;
 			});
+			if (row > 1) {
+				const multiNum = row / 10 + 1;
+				vue.score += Math.floor(row * 100 * multiNum);
+			} else {
+				vue.score += row * 100;
+			}
 		}
 	}
 
@@ -127,20 +133,20 @@ export function createMain(vue, shapeTypeQueue) {
 }
 
 export function tern() {
-    shape.rotate();
+	shape.rotate();
 }
 
 export function left() {
-    shape.moveLeft();
+	shape.moveLeft();
 }
 
 export function right() {
-    shape.moveRight();
+	shape.moveRight();
 }
 
 export function drop() {
 	isBtnDown = true;
-    speed = baseSpeed * 4 < 200 ? 200 : baseSpeed * 4;
+	speed = baseSpeed * 4 < 200 ? 200 : baseSpeed * 4;
 }
 
 export function dropEnd() {
@@ -149,9 +155,9 @@ export function dropEnd() {
 }
 
 export function setPlay() {
-    scene.physics.resume();
+	scene.physics.resume();
 }
 
 export function setStop() {
-    scene.physics.pause();
+	scene.physics.pause();
 }

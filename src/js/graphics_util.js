@@ -5,6 +5,7 @@ export function loadAllImages(game) {
     game.load.image("type3", "img/block3.png");
     game.load.image("type4", "img/block4.png");
     game.load.image("type5", "img/block5.png");
+    game.load.image("type6", "img/block6.png");
     game.load.spritesheet("lightImage", "img/pipo-btleffect008.png", { frameWidth: 120, frameHeight: 120 });
 }
 

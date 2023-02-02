@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'Oswald';
-    src: url(~@/assets/Oswald-VariableFont_wght.ttf);
-}
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 body {
     min-height: 100vh;
@@ -144,56 +141,64 @@ hr {
 .leftSide {
     .scoreBoard {
         text-align: center;
-        padding: 20px 0;
+        padding: 22px 0 16px;
         border-radius: 4px 0 0 4px;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         box-shadow: inset -4px 0px 8px rgba(0, 0, 0, 0.25);
 
         .logo {
             width: 94px;
             margin: auto;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
         &_text {
             color: #999;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             transform: scale(0.8);
         }
 
         .icon {
             margin: auto;
-            margin-bottom: 10px;
+            margin-bottom: 3px;
         }
 
         &_score {
-            margin: 20px 0 20px;
+            margin: 14px 0 26px;
+
+            .head {
+                margin-bottom: 3px;
+            }
 
             &_card {
                 position: relative;
 
                 img {
-                    width: 101px;
+                    width: 107px;
                     margin: auto;
                 }
 
                 .num {
                     position: absolute;
                     color: #000;
-                    top: 0;
-                    left: 26px;
-                    font-family: 'Oswald';
+                    top: 4px;
+                    left: 22px;
+                    font-family: 'Share Tech Mono';
                     font-weight: 400;
-                    font-size: 32px;
+                    font-size: 36px;
                     line-height: 47px;
-                    letter-spacing: 0.21em;
+                    letter-spacing: 0.15em;
                     text-shadow: 0px 1px 2px #FFFFFF;
                 }
             }
         }
 
         &_level {
-            margin-top: 10px;
+            margin-top: 12px;
+
+            .head {
+                margin-bottom: 3px;
+            }
 
             ul {
                 position: relative;
@@ -255,13 +260,17 @@ hr {
                 transform: scale(0.8);
                 color: #aaa;
                 border-right: 1px solid rgba(255, 255, 255, 0.3);
-                margin-right: 5px;
+                padding-right: 5px;
+                position: relative;
+                left: -5px;
+                top: -2px;
+                line-height: 16px;
             }
 
             img {
                 display: inline-block;
                 vertical-align: text-bottom;
-                margin: 0 5px 0 5px;
+                margin: 0 2px 0 6px;
             }
         }
     }
@@ -273,20 +282,23 @@ hr {
 }
 
 .rightSide {
+    margin-top: 24px;
     text-align: center;
-    padding: 15px 0;
+    padding: 13px 0 15px;
     border-radius: 0 4px 4px 0;
     box-shadow: inset 4px 0px 8px rgba(0, 0, 0, 0.25);
 
     &>.head {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     #side {
-        margin-bottom: 20px;
+        margin-bottom: 28px;
 
         canvas {
             border-radius: 4px;
+            background-color: #fff;
+            box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
         }
 
     }
@@ -296,7 +308,7 @@ hr {
         margin: auto;
 
         .icon {
-            margin: 0 auto 10px;
+            margin: 0 auto 9px;
         }
 
         &>.head {
@@ -322,7 +334,7 @@ hr {
                 margin-left: 0 !important;
             }
 
-            &_left {
+            &_right {
                 margin-right: 0 !important;
             }
 

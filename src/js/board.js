@@ -61,6 +61,7 @@ export default class Board {
 					duration: 500,
 				});
 				let efect = this.game.physics.add.sprite(sprite.x, sprite.body.y, "axis");
+				efect.setScale(0.7);
 				efect.anims.play("light", true);
 				tempSprites.push(dynamic);
 				tempSprites.push(efect);
@@ -90,9 +91,6 @@ export default class Board {
             completedRowIndex.forEach(() => {
                 this.stackedBlocks.unshift(this._blankRow.concat());
             });
-			// for (let i of completedRowIndex) {
-			// 	this.stackedBlocks.unshift(this._blankRow.concat());
-			// }
 
 			for (let sprite of tempSprites) {
 				sprite.destroy();

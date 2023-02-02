@@ -28,7 +28,6 @@ export default class Shape {
 		this.physicsGroup = shape;
 		this.hasOdd = type.cols % 2 === 1 || type.rows % 2 === 1;
 		this.xOdd = type.cols % 2 === 1;
-        this.direction = 1;
 	}
 
 	getPhysicsGroup() {

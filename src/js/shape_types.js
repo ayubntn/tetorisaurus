@@ -3,28 +3,6 @@ const SHAPE_TYPES = [
 		name: "type0",
 		blocks: [
 			{ x: 0, y: 0 },
-			{ x: 1, y: 0 },
-			{ x: 1, y: 1 },
-			{ x: 1, y: 2 },
-		],
-		cols: 2,
-		rows: 3,
-	},
-	{
-		name: "type1",
-		blocks: [
-			{ x: 0, y: 0 },
-			{ x: 1, y: 0 },
-			{ x: 2, y: 0 },
-			{ x: 3, y: 0 },
-		],
-		cols: 4,
-		rows: 1,
-	},
-	{
-		name: "type2",
-		blocks: [
-			{ x: 0, y: 0 },
 			{ x: 0, y: 1 },
 			{ x: 0, y: 2 },
 			{ x: 1, y: 1 },
@@ -33,7 +11,7 @@ const SHAPE_TYPES = [
 		rows: 3,
 	},
 	{
-		name: "type3",
+		name: "type1",
 		blocks: [
 			{ x: 0, y: 0 },
 			{ x: 0, y: 1 },
@@ -44,7 +22,18 @@ const SHAPE_TYPES = [
 		rows: 3,
 	},
 	{
-		name: "type4",
+		name: "type2",
+		blocks: [
+			{ x: 1, y: 0 },
+			{ x: 1, y: 1 },
+			{ x: 0, y: 1 },
+			{ x: 0, y: 2 },
+		],
+		cols: 2,
+		rows: 3,
+	},
+	{
+		name: "type3",
 		blocks: [
 			{ x: 0, y: 0 },
 			{ x: 1, y: 0 },
@@ -55,7 +44,29 @@ const SHAPE_TYPES = [
 		rows: 2,
 	},
 	{
+		name: "type4",
+		blocks: [
+			{ x: 0, y: 0 },
+			{ x: 1, y: 0 },
+			{ x: 1, y: 1 },
+			{ x: 1, y: 2 },
+		],
+		cols: 2,
+		rows: 3,
+	},
+	{
 		name: "type5",
+		blocks: [
+			{ x: 0, y: 0 },
+			{ x: 1, y: 0 },
+			{ x: 2, y: 0 },
+			{ x: 3, y: 0 },
+		],
+		cols: 4,
+		rows: 1,
+	},
+	{
+		name: "type6",
 		blocks: [
 			{ x: 0, y: 0 },
 			{ x: 0, y: 1 },
@@ -74,12 +85,12 @@ export default class ShapeTypeQueue {
 		for (let i = 0; i < ShapeTypeQueue.limit; i++) {
 			this.types.push(SHAPE_TYPES[ShapeTypeQueue.random()]);
 		}
-        this.shiftCount = 0;
+		this.shiftCount = 0;
 	}
 
 	shift() {
 		this.types.push(SHAPE_TYPES[ShapeTypeQueue.random()]);
-        this.shiftCount++;
+		this.shiftCount++;
 		return this.types.shift();
 	}
 
